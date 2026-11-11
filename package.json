@@ -1,0 +1,23 @@
+{
+  "name": "copilot-chat-organizer",
+  "version": "1.0.0",
+  "description": "Review and bulk-organize Microsoft 365 Copilot / Cowork and GitHub Copilot conversations",
+  "main": "src/server/main.ts",
+  "scripts": {
+    "start": "node src/server/main.ts",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "node --test \"test/*.test.ts\"",
+    "discover": "node tools/discover.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "playwright-core": "1.64.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="organizer-token" content="%%ORGANIZER_TOKEN%%">
+  <title>Copilot Chat Organizer</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/app.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Copilot Chat Organizer</div>
+    <nav id="tabs" class="tabs" role="tablist" aria-label="Sources"></nav>
+    <div class="topbar-actions">
+      <button id="refreshBtn" class="primary" type="button" title="Reload conversations from the selected source">Refresh</button>
+      <button id="handoffBtn" type="button" title="GitHub Copilot app sessions waiting to be deleted by the app">Hand-off <span id="handoffCount" class="count" hidden></span></button>
+      <button id="trashBtn" type="button" title="Local sessions moved to the organizer trash">Trash</button>
+      <button id="activityBtn" type="button" title="Recent operations">Activity</button>
+    </div>
+  </header>
+  <div id="banner" class="banner" role="alert" hidden></div>
+  <div id="statusStrip" class="status-strip" role="status" aria-live="polite"></div>
+  <main class="layout">
+    <aside class="sidebar" aria-label="Filters and groups">
+      <input id="search" class="search" type="search" placeholder="Search  ( / )" autocomplete="off" spellcheck="false" aria-label="Search conversations">
+      <div class="filters">
+        <label>Type <select id="kindFilter"></select></label>
+        <label>Where <select id="locationFilter"></select></label>
+        <label>Last activity
+          <select id="ageFilter">
+            <option value="">Any time</option>
+            <option value="lt7">In the last 7 days</option>
+            <option value="lt30">In the last 30 days</option>
+            <option value="gt30">More than 30 days ago</option>
+            <option value="gt90">More than 90 days ago</option>
+            <option value="gt365">More than a year ago</option>
+          </select>
+        </label>
+      </div>
+      <section id="projectsSection" class="nav-section">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <button id="newProjectBtn" class="link" type="button">+ New</button>
+        </div>
+        <ul id="projectList" class="nav-list"></ul>
+      </section>
+      <section class="nav-section">
+        <div class="section-head">
+          <h2>Collections</h2>
+          <button id="newCollectionBtn" class="link" type="button">+ New</button>
+        </div>
+        <p class="hint">Local groups that can mix sources. Drag conversations onto a project or collection.</p>
+        <ul id="collectionList" class="nav-list"></ul>
+      </section>
+    </aside>
+    <section class="list-pane" aria-label="Conversations">
+      <div id="bulkBar" class="bulk-bar" hidden></div>
+      <div id="listHeader" class="list-header"></div>
+      <div id="list" class="list" role="listbox" aria-multiselectable="true" tabindex="0"></div>
+    </section>
+    <aside id="detail" class="detail" aria-label="Conversation details"></aside>
+  </main>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <dialog id="dialog" class="dialog"></dialog>
+</body>
+</html>
